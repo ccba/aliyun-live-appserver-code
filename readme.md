@@ -1,4 +1,4 @@
-Node.js实现的阿里云直播连麦demo的Appserver程序
+Node.js实现的阿里云直播连麦demo的Appserver程序, [说明文档](https://github.com/ccba/aliyun-live-appserver-doc)
 
 ## 依赖环境
 
