@@ -93,7 +93,7 @@ node app.js
 运行命令：cnpm install pm2 -g
 
 ### 启动程序
-进入程序根目录， 运行: npm run prod
+进入aliyunlivedemo目录， 运行: npm run prod
 
 ### 关闭程序
- 进入程序根目录， 运行: npm run stop
+ 进入aliyunlivedemo目录， 运行: npm run stop
