@@ -1,0 +1,18 @@
+{
+  "apps": [{
+    "name": "videocallservice",
+    "script": "./app.js",
+    "watch": false,
+    "ignore_watch": ["node_modules"],
+    "env": {
+      "NODE_ENV": "development",
+    },
+    "env_production": {
+      "NODE_ENV": "production"
+    },
+    "error_file": "./videocalllog/videocallservice_err.log",
+    "out_file": "./videocalllog/videocallservice_out.log",
+    "merge_logs": true,
+    "log_date_format": "YYYY-MM-DD HH:mm Z"
+  }]
+}

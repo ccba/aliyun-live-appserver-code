@@ -1,0 +1,127 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.10.3
+3 info using node@v6.3.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/lmq/lmserver/npm',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/lmq/.npm/aliyunlivedemo/1.0.0/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/lmq/.npm correctMkdir not in flight; initializing
+10 info lifecycle aliyunlivedemo@1.0.0~prepublish: aliyunlivedemo@1.0.0
+11 silly lifecycle aliyunlivedemo@1.0.0~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/lmq/.npm/aliyunlivedemo/1.0.0/package.tgz',
+12 verbose tar pack   '/Users/lmq/lmserver/npm' ]
+13 verbose tarball /Users/lmq/.npm/aliyunlivedemo/1.0.0/package.tgz
+14 verbose folder /Users/lmq/lmserver/npm
+15 verbose addLocalTarball adding from inside cache /Users/lmq/.npm/aliyunlivedemo/1.0.0/package.tgz
+16 verbose correctMkdir /Users/lmq/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd aliyunlivedemo@1.0.0
+18 verbose afterAdd /Users/lmq/.npm/aliyunlivedemo/1.0.0/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/lmq/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/lmq/.npm/aliyunlivedemo/1.0.0/package/package.json written
+21 silly publish { name: 'aliyunlivedemo',
+21 silly publish   version: '1.0.0',
+21 silly publish   description: 'aliyun live demo contains live,videocall, mns',
+21 silly publish   scripts:
+21 silly publish    { start: 'node ./bin/www',
+21 silly publish      dev: 'NODE_ENV=development nodemon --debug ./app.js',
+21 silly publish      prod: 'NODE_ENV=production pm2 start ./app.js --name videocallmnsserver --merge-logs --log-date-format \'YYYY-MM-DD HH:mm:ss\' -e videocall_err.log -o videocall_out.log',
+21 silly publish      stop: 'NODE_ENV=production pm2 stop videocallmnsserver' },
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'https: //github.com/ccba/aliyun-live-appserver-code' },
+21 silly publish   keywords: [ 'aliyun', 'live', 'videocall', 'mns' ],
+21 silly publish   author: { name: 'Lin muqin' },
+21 silly publish   dependencies:
+21 silly publish    { 'body-parser': '~1.1.1',
+21 silly publish      co: '^4.6.0',
+21 silly publish      'cookie-parser': '~1.4.3',
+21 silly publish      'date-utils': '^1.2.21',
+21 silly publish      debug: '~2.2.0',
+21 silly publish      express: '~4.13.4',
+21 silly publish      'form-data': '^1.0.0-rc4',
+21 silly publish      jade: '~1.11.0',
+21 silly publish      morgan: '~1.7.0',
+21 silly publish      mosca: '^2.0.2',
+21 silly publish      'node-fetch': '^1.6.0',
+21 silly publish      promise: '^7.1.1',
+21 silly publish      redis: '^2.6.2',
+21 silly publish      'redis-commands': '^1.2.0',
+21 silly publish      request: '^2.74.0',
+21 silly publish      'serve-favicon': '~2.3.0',
+21 silly publish      'then-redis': '^2.0.1',
+21 silly publish      url: '^0.11.0',
+21 silly publish      xml2js: '^0.4.17',
+21 silly publish      xmlbuilder: '^8.2.2' },
+21 silly publish   readme: '阿里云直播连麦demo的Appserver程序\n',
+21 silly publish   readmeFilename: 'readme.md',
+21 silly publish   _id: 'aliyunlivedemo@1.0.0',
+21 silly publish   _shasum: '67e8a03a9785727826bceb89105fbc3c6d55b32a',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name aliyunlivedemo
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'aliyunlivedemo',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'aliyunlivedemo',
+26 silly mapToRegistry   name: 'aliyunlivedemo',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/aliyunlivedemo
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/lmq/.npm/aliyunlivedemo/1.0.0/package.tgz
+30 verbose request uri https://registry.npmjs.org/aliyunlivedemo
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 16:06:30
+33 verbose request using bearer token for auth
+34 verbose request id c2d5136d885c1f33
+35 http request PUT https://registry.npmjs.org/aliyunlivedemo
+36 http 403 https://registry.npmjs.org/aliyunlivedemo
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'content-length': '128',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Wed, 14 Dec 2016 08:06:47 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-ams4438-AMS',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1481702803.873889,VS0,VE3995',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/lmq/.npm/registry.npmjs.org/aliyunlivedemo on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: "You cannot publish over the previously published version 1.0.0. Try bumping the version to 2.0.0" : aliyunlivedemo
+40 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+40 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+40 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:200:22)
+40 verbose stack     at emitTwo (events.js:106:13)
+40 verbose stack     at Request.emit (events.js:191:7)
+40 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1067:10)
+40 verbose stack     at emitOne (events.js:101:20)
+40 verbose stack     at Request.emit (events.js:188:7)
+40 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:988:12)
+41 verbose statusCode 403
+42 verbose pkgid aliyunlivedemo
+43 verbose cwd /Users/lmq/lmserver/npm
+44 error Darwin 15.2.0
+45 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+46 error node v6.3.0
+47 error npm  v3.10.3
+48 error code E403
+49 error "You cannot publish over the previously published version 1.0.0. Try bumping the version to 2.0.0" : aliyunlivedemo
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]

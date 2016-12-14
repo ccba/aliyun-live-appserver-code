@@ -1,0 +1,41 @@
+{
+  "name": "aliyunlivedemo",
+  "version": "1.0.0",
+  "description": "aliyun live demo contains live,videocall, mns",
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "NODE_ENV=development nodemon --debug ./app.js",
+    "prod": "NODE_ENV=production pm2 start ./app.js --name videocallmnsserver --merge-logs --log-date-format 'YYYY-MM-DD HH:mm:ss' -e videocall_err.log -o videocall_out.log",
+    "stop": "NODE_ENV=production pm2 stop videocallmnsserver"
+  },
+  "repository": "https: //github.com/ccba/aliyun-live-appserver-code",
+  "keywords": [
+    "aliyun",
+    "live",
+    "videocall",
+    "mns"
+  ],
+  "author": "Lin muqin",
+  "dependencies": {
+    "body-parser": "~1.1.1",
+    "co": "^4.6.0",
+    "cookie-parser": "~1.4.3",
+    "date-utils": "^1.2.21",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "form-data": "^1.0.0-rc4",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
+    "mosca": "^2.0.2",
+    "node-fetch": "^1.6.0",
+    "promise": "^7.1.1",
+    "redis": "^2.6.2",
+    "redis-commands": "^1.2.0",
+    "request": "^2.74.0",
+    "serve-favicon": "~2.3.0",
+    "then-redis": "^2.0.1",
+    "url": "^0.11.0",
+    "xml2js": "^0.4.17",
+    "xmlbuilder": "^8.2.2"
+  }
+}
