@@ -13,10 +13,9 @@ Node.js实现的阿里云直播连麦demo的Appserver程序, [说明文档](http
 在申请阿里云ECS时， 镜像类型选择**镜像市场**, 从镜像市场选择，输入关键字**Nodejs集成环境**过滤,选择对应操作系统的镜像。
 
 ## 安装Appserver
-运行命令:
-
+获取代码，进入aliyun-live-appserver-code目录 运行命令:
 ```python
-cnpm install  aliyunlivedemo
+cnpm install
 ```
 
 ## 修改配置
@@ -68,7 +67,7 @@ config = {
 ```
 
 ## 运行程序
-进入aliyunlivedemo目录， 运行命令：
+进入aliyun-live-appserver-code目录， 运行命令：
 ```python
 node app.js
 ```
