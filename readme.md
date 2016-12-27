@@ -1,71 +1,68 @@
 Node.js实现的阿里云直播连麦demo的Appserver程序, [说明文档](https://github.com/ccba/aliyun-live-appserver-doc)
 
-## 依赖环境
+## 安装依赖环境
 
-### 手动安装
-
-#### Node.js
+### Node.js
 参考官网：https://nodejs.org/en/download/   安装完后，在命令窗口输入：node -v  验证是否安装成功
-#### Redis
+### Redis
 官网下载安装redis, 启动服务，参考:http://www.runoob.com/redis/redis-install.html
-
-### 镜像市场安装
-在申请阿里云ECS时， 镜像类型选择**镜像市场**, 从镜像市场选择，输入关键字**Nodejs集成环境**过滤,选择对应操作系统的镜像。
 
 ## 安装Appserver
 获取代码，进入aliyun-live-appserver-code目录 运行命令:
 ```python
-cnpm install
+npm install
 ```
 
 ## 修改配置
-配置定义在config.js文件中
-```ruby
-config = {
-  port: 4000, //服务端口号
-  ip: "localhost", //服务IP地址
-  redis: {
-    password: "videocall", //redis连接密码
-    host: 'localhost', //redis的host
-    port: 6379, //redis端口号
-    keyprefix: 'mns'
-  },
-  ali: {
-    mnsTopic: {  //阿里云mns服务信息配置
-      topicWebsocketServerIp: "115.28.250.251",
-      subscriptionEndpoint: "WebSocket"
-    },
-    ownerId: '1252745454',
-    accessKeyID: 'Q1dfW3pBESJS',
-    accessKeySecret: 'sdDpBtlS9Bcg80eU5cwTMzvGU',
-    mnsVersion: '2015-06-06', //mns接口版本
-    region: 'cn-qingdao-internal-japan-test', 
-    // region: 'cn-hangzhou',
-    commonParams: {
-      Format: 'json',
-      SignatureMethod: 'HMAC-SHA1',
-      SignatureVersion: '1.0'
-    },
-    urls: {
-      cdn: { //cdn地址和版本
-        url: 'https://cdn.aliyuncs.com',
-        version: '2014-11-11'
-      }
-    }
-  },
-  videocall: {
-    templateName: '_mix' //CDN混流模版名称，默认为mix
-  },
-  //用于生产直播推流和播放地址 这个要到阿里云控制台配置自己的推流和播放域名
-  appName: 'DemoApp',
-  authKey: 'qupaivid', //用于生产推流鉴权的key， 如果为空将不添加auth_key参数
-  appName: 'DemoApp',
-  isCenterPush: false, //是否中心推流 rtmp://video-center.alivecdn.com/DemoApp/3ff0274890?vhost=videocall.play.aliyun.com
-  rtmpHost: 'videocall.push.aliyun.com', //推流host域名
-  playHost: 'videocall.play.aliyun.com', //播放host域名
-}
-```
+配置是在config.js文件里，一般需要配置redis， 阿里帐号，直播相关信息
 
+        ```ruby
+        config = {
+          port: 4000, //服务端口号
+          ip: "localhost", //服务IP地址
+          //根据安装的redis, 修改对应的配置
+          redis: {
+            password: "", //redis连接密码
+            host: 'localhost', //redis的host
+            port: 6379, //redis端口号
+            keyprefix: 'mns'
+          },
+      
+          ali: {
+            mnsTopic: {  //阿里云mns服务信息配置
+              topicWebsocketServerIp: "115.28.250.251",
+              subscriptionEndpoint: "WebSocket"
+            },
+            //填写阿里的帐号信息
+            ownerId: '1252745454',
+            accessKeyID: 'Q1dfW3pBESJS',
+            accessKeySecret: 'sdDpBtlS9Bcg80eU5cwTMzvGU',
+            mnsVersion: '2015-06-06', //mns接口版本
+            region: 'cn-qingdao-internal-japan-test', 
+            // region: 'cn-hangzhou',
+            commonParams: {
+              Format: 'json',
+              SignatureMethod: 'HMAC-SHA1',
+              SignatureVersion: '1.0'
+            },
+            urls: {
+              cdn: { //cdn地址和版本
+                url: 'https://cdn.aliyuncs.com',
+                version: '2014-11-11'
+              }
+            }
+          },
+          videocall: {
+            templateName: '_mix' //CDN混流模版名称，默认为mix
+          },
+          //用于生产直播推流和播放地址 这个要到阿里云控制台配置自己的推流和播放域名
+          authKey: 'qupaivid', //用于生产推流鉴权的key， 如果为空将不添加auth_key参数
+          appName: 'DemoApp',
+          isCenterPush: false, //是否中心推流 rtmp://video-center.alivecdn.com/DemoApp/3ff0274890?vhost=videocall.play.aliyun.com
+          rtmpHost: 'videocall.push.aliyun.com', //推流host域名
+          playHost: 'videocall.play.aliyun.com', //播放host域名
+        }
+        ```
 ## 运行程序
 进入aliyun-live-appserver-code目录， 运行命令：
 ```python
