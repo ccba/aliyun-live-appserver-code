@@ -14,7 +14,7 @@ npm install
 ```
 
 ## 修改配置
-配置是在config.js文件里，一般需要配置redis， 阿里帐号，直播相关信息
+配置是在config.js文件里
 
         ```ruby
         config = {
@@ -63,31 +63,47 @@ npm install
           playHost: 'videocall.play.aliyun.com', //播放host域名
         }
         ```
+
+一般需要配置redis， 阿里帐号，直播相关信息
+
+1. 阿里云帐号信息
+
+   [阿里的帐号信息](https://help.aliyun.com/knowledge_detail/38738.html)
+
+    ownerId: '1252745454' //帐号信息里的账号ID
+
+    accessKeyID: 'Q1dfW3pBESJS'
+
+    accessKeySecret: 'sdDpBtlS9Bcg80eU5cwTMzvGU'
+
+2. 直播相关信息
+
+      //用于生产直播推流和播放地址 这个要到阿里云控制台配置自己的推流和播放域名
+
+      authKey: 'qupaivid', //用于生产推流[鉴权的key](https://help.aliyun.com/document_detail/45210.html) 如果为空将不添加auth_key参数 
+      
+      下面的参数根据你的直播控制台里的配置填写[直播控制台](https://help.aliyun.com/document_detail/29957.html?spm=5176.doc45215.6.546.CjFllk)
+
+      appName: 'DemoApp',
+
+      isCenterPush: false, //是否中心推流 rtmp://video-center.alivecdn.com/
+      DemoApp/3ff0274890?vhost=videocall.play.aliyun.com
+
+      rtmpHost: 'videocall.push.aliyun.com', //推流host域名
+
+      playHost: 'videocall.play.aliyun.com', //播放host域名
+
 ## 运行程序
 进入aliyun-live-appserver-code目录， 运行命令：
 ```python
 node app.js
 ```
-## 特殊情况处理
-因为连麦异常通知消息包含空格， 导致appserver消息接受不到,CDN的要下次发布时候添加decode，临时解决方案是这个回调通过nginx代理跳转， 下一版本就不用这一步了。
 
-### 安装nginx
-1. 安装参考：http://blog.csdn.net/molingduzun123/article/details/51850925  zlib可以不安装
-2. 配置ngix.conf, 添加端口
+运行成功:
 
-```python
-   server {
-        listen 9020;
-        server_name localhost;
-        index index.html;
+![success](../img/success.png,"success")
 
-        location /ali/mix/status/notify  {
-            set $args MainMixDomain=$arg_MainMixDomain&MainMixApp=$arg_MainMixApp&MainMixStream=$arg_MainMixStream&MixDomain=$arg_MixDomain&MixApp=$arg_MixApp&MixStream=$arg_MixStream=$arg_MixStream&MixType=$arg_MixType&MixTemplate=$arg_MixTemplate&Event=MixResult&Code=$arg_Code&Message=$arg_Code;
-
-            proxy_pass http://localhost:4000/ali/mix/status/notify;
-          }
-        } 
-```
+如果运行成功， APP客户端就可以通过http://[appserver ip]:[port]/[api url], 例如: http://192.168.10.23:4000/live/create [接口参考](https://github.com/ccba/aliyun-live-appserver-doc)
 
 ## 使用PM2管理程序（可选择）
 
@@ -99,3 +115,4 @@ node app.js
 
 ### 关闭程序
  进入aliyunlivedemo目录， 运行: npm run stop
+
