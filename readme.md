@@ -101,7 +101,7 @@ node app.js
 
 运行成功:
 
-![success](../img/success.png,"success")
+![success](https://github.com/ccba/aliyun-live-appserver-code/blob/master/success.png "success")
 
 如果运行成功， APP客户端就可以通过http://[appserver ip]:[port]/[api url], 例如: http://192.168.10.23:4000/live/create [接口参考](https://github.com/ccba/aliyun-live-appserver-doc)
 
