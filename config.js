@@ -10,14 +10,14 @@ let config = {
   },
   ali: {
     mnsTopic: {
-      topicWebsocketServerIp: "115.28.250.251",
+      topicWebsocketServerIp: "",
       subscriptionEndpoint: "WebSocket"
     },
     ownerId: '1252773433',
     accessKeyID: 'Q1dfW3pBESJS',
     accessKeySecret: 'sdDpBtlS9Bcg80eU5cwTMzvGU',
     mnsVersion: '2015-06-06',
-    region: 'cn-qingdao-internal-japan-test',
+    mnsRegion: 'cn-shanghai',
     // region: 'cn-hangzhou',
     commonParams: {
       Format: 'json',
