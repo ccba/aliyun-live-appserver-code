@@ -8,6 +8,7 @@ const mns = require('../service/mns/mns')
 const config = require('../config');
 
 class MNSCtrl {
+  //MNS的websocket链接信息
   websocketInfo(req, res) {
     let {
       topic,
@@ -25,11 +26,13 @@ class MNSCtrl {
       authentication: result.authentication,
       date: result.date,
       topicWebsocketServerIp: config.ali.mnsTopic.topicWebsocketServerIp,
+      topicWebsocketServerAddress: `ws://${config.ali.ownerId}.mns-websocket.${config.ali.msnRegion}.aliyuncs.com/mns`,
       accountId: config.ali.ownerId,
       accessId: config.ali.accessKeyID
     });
   }
 
+  //obsolete
   getHeaders(req, res) {
     let {
       httpVerb,
@@ -51,6 +54,7 @@ class MNSCtrl {
 
   }
 
+  //obsolete
   getQueues(req, res) {
     co(function*() {
       let names = yield queue.getQueues();

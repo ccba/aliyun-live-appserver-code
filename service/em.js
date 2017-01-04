@@ -4,6 +4,7 @@ const request = require('../data/dataRequest')
 const util = require('../util/util');
 const address = require('../service/address');
 
+//obsolete
 class em {
   static getUrl(url) {
     return `https://${config.em.host}/${config.em.orgName}/${config.em.appName}${url}`

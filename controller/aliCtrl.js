@@ -9,6 +9,8 @@ const delayQueue = require('../util/delayQueue');
 const response = require('../util/response');
 
 class AliCtrl {
+
+  //阿里云混流可用通知
   notifyFromMixAvailability(req, res) {
     let {
       Event: event,
@@ -22,6 +24,7 @@ class AliCtrl {
     response.success(res);
   }
 
+  //阿里云原始流推流，断流通知
   notifyFromStream(req, res) {
     let {
       action,
@@ -47,6 +50,7 @@ class AliCtrl {
     });
   }
 
+  //混流结果通知
   notifyFromMixStatus(req, res) {
     let {
       MainMixDomain, //主流域名

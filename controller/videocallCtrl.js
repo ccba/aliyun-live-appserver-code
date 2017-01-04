@@ -17,6 +17,7 @@ const {
 
 class VideocallCtrl {
 
+  //邀请连麦， 向被邀请方发送邀请信息推送
   invite(req, res) {
     let {
       inviterUid: inviterUid,
@@ -70,6 +71,12 @@ class VideocallCtrl {
     });
   }
 
+  /*邀请反馈
+  1. 如果是观众，将会创建直播，并且返回推送地址到客户端
+  2. 如果连麦双方都已经混流可用，将直接调用混流接口
+  3. 否则就在混流可用回调里， 判断双方都已经混流可用时， 调用混流接口
+  4. 对方的短延时地址，客户端通过返回值和消息推送得到
+  */
   feedback(req, res) {
     let {
       status,
@@ -130,6 +137,7 @@ class VideocallCtrl {
     });
   }
 
+  //结束连麦，调用结束连麦接口
   close(req, res) {
     let {
       closeRoomId: closeRoomId,

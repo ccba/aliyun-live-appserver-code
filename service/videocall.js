@@ -21,6 +21,7 @@ class VideoCall {
     redis.hmset(INVITER_LIST_KEY, field, JSON.stringify(params));
   }
 
+  //得到存储的连麦信息
   static getVideoCalls(roomId) {
     return new Promise((resolve, reject) => {
       redis.hgetall(INVITER_LIST_KEY, (err, datas) => {
@@ -52,6 +53,8 @@ class VideoCall {
     redis.hdel(INVITER_LIST_KEY, dqUtil.getInviterInfoKey(notifiedRoomId, closeRooomId));
   }
 
+
+  //开始混流 A B互换为主流和副流，分别调用混流接口
   static startMix(videoInfo, callback) {
     let inviterRoomid = videoInfo.inviterRoomId,
       inviteeRoomid = videoInfo.inviteeRoomId,
@@ -98,6 +101,7 @@ class VideoCall {
     });
   }
 
+  //结束混流 A B互换为主流和副流，分别调用结束混流接口
   static closeMix(closeLiveInfo, notifiedLiveInfo, callback) {
     let closeRoomId = closeLiveInfo.roomId,
       notifiedRoomId = notifiedLiveInfo.roomId;
@@ -121,50 +125,6 @@ class VideoCall {
             errResult = VideoCall.errorHandle(result, `结束混流失败:closeRoomId=${closeRoomId} notifiedRoomId=${notifiedRoomId}`);
           }
         }
-      }
-      if (callback)
-        callback(errResult);
-    }).catch((err) => {
-      if (callback)
-        callback(response.onError(err));
-    });
-  }
-
-  static startMainMix(mainRoomId, roomid, type, option, callback) {
-    console.log(`重新开始混流：mainRoomId=${mainRoomId} roomid=${roomid}`);
-    co(function*() {
-      let errResult = "",
-        inviterPlayUrls = [],
-        inviteePlayUrls = [];
-      try {
-        let result = yield cdn.startMux(mainRoomId, roomid, type);
-        if (util.isArray(result)) {
-          result.forEach((key) => {
-            inviterPlayUrls.push(address.getMixPlayUrlByStream(key.stream));
-          })
-        }
-      } catch (result) {
-        errResult = VideoCall.errorHandle(result, `重新开始混流时失败:mainRoomId=${mainRoomId} roomid=${roomid}}`);
-      };
-
-      VideoCall.mixMsgSend(errResult, mainRoomId, roomid, option, inviterPlayUrls, inviteePlayUrls);
-      if (callback) {
-        callback(errResult);
-      }
-    }).catch((err) => {
-      if (callback)
-        callback(response.onError(err));
-    });
-  }
-
-  static closeMainMix(closeRoomId, notifiedRoomId, callback) {
-    console.log(`断流关闭混流:closeRoomId=${closeRoomId} notifiedRoomId=${notifiedRoomId}`);
-    co(function*() {
-      let errResult = "";
-      try {
-        yield cdn.stopMux(closeRoomId, notifiedRoomId);
-      } catch (result) {
-        errResult = VideoCall.errorHandle(result, `断流结束混流失败:closeRoomId=${closeRoomId} notifiedRoomId=${notifiedRoomId}`);
       }
       if (callback)
         callback(errResult);

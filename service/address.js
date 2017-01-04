@@ -4,13 +4,13 @@ var address = {
   getRtmpUrl: (roomId) => {
     let url = `/${config.appName}/${roomId}`,
       host = config.rtmpHost;
-    if (config.isCenterPush) {
-      url = url + `?vhost=${config.playHost}`;
-      host = 'video-center.alivecdn.com';
-    }
     let auth_key = "";
     if (config.authKey) {
       auth_key = util.getAuthKey(url);
+    }
+    if (config.isCenterPush) {
+      url = `${url}?vhost=${config.playHost}`;
+      host = 'video-center.alivecdn.com';
     }
     url = `rtmp://${host}${url}`;
     if (auth_key) {
@@ -34,7 +34,6 @@ var address = {
     let url = `/${config.appName}/${roomId}${mixString}`;
     return `rtmp://${config.playHost}${url}`;
   },
-
   getMixplayUrl: (roomId) => {
     let url = `/${config.appName}/${roomId}${config.videocall.templateName}`;
     return `http://${config.playHost}${url}`;

@@ -37,6 +37,7 @@ class BaseCtrl {
     });
   }
 
+  //获取阿里云STS token
   aliToken(req, res) {
     let {
       assumeRole,
@@ -59,6 +60,7 @@ class BaseCtrl {
     });
   }
 
+  　
   reset(req, res) {
     let {
       key

@@ -94,7 +94,7 @@ class MNSTopic {
   }
 
   static makeTopicURL() {
-    return util.format("http://%s.mns.%s.aliyuncs.com/topics/", config.ali.ownerId, config.ali.region);
+    return util.format("http://%s.mns.%s.aliyuncs.com/topics/", config.ali.ownerId, config.ali.mnsRegion);
   }
 
   // private _patternTopic = "http://%s.mns.cn-%s.aliyuncs.com/topics/";

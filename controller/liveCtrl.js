@@ -15,14 +15,17 @@ const {
 
 class LiveCtrl {
 
+  //创建直播
   create(req, res) {
     this._create(req, res);
   }
 
+  //观看直播
   play(req, res) {
     this._play(req, res);
   }
 
+  //主播结束直播
   leave(req, res) {
     let {
       roomId
@@ -31,6 +34,7 @@ class LiveCtrl {
       roomId: roomId
     }, 8);
     co(function*() {
+
       yield [mns.publish(roomId, msg, 5), live.setStatus(roomId, 2)];
       live.deletePlayList(roomId);
       delayQueue.queue(roomId, () => {
@@ -43,6 +47,7 @@ class LiveCtrl {
     });
   }
 
+  //观众离开直播
   userLeave(req, res) {
     let {
       roomId,
@@ -52,6 +57,7 @@ class LiveCtrl {
     response.success(res);
   }
 
+  //直播列表
   list(req, res) {
     let {
       roomId: roomId1
@@ -74,6 +80,7 @@ class LiveCtrl {
     });
   }
 
+  //评论
   comment(req, res) {
     let {
       uid,
@@ -94,6 +101,7 @@ class LiveCtrl {
     });
   }
 
+  //点赞
   like(req, res) {
     let {
       uid,
@@ -114,7 +122,7 @@ class LiveCtrl {
   }
 
   //私有方法
-
+  //创建直播， 如果3分钟后没有推流，将会删除直播记录
   _create(req, res) {
     let {
       uid,

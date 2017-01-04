@@ -7,6 +7,7 @@ const videoCall = require('../service/videocall');
 const config = require('../config.js');
 class AliNotify {
 
+  //原始流推流
   static publish(liveInfo) {
     let roomId = liveInfo.roomId;
     delayQueue.deQueue(roomId);
@@ -19,6 +20,7 @@ class AliNotify {
     AliNotify._sendNotifyMsgForStream(roomId, msg);
   }
 
+  //原始流断流
   static publishEnd(liveInfo) {
     let roomId = liveInfo.roomId,
       type = liveInfo.type;
@@ -36,6 +38,7 @@ class AliNotify {
     AliNotify._sendNotifyMsgForStream(roomId, msg);
   }
 
+  //混流可用通知
   static mixAvailablity(roomId) {
     co(function*() {
       live.setProperty(roomId, 'isMixReady', true);

@@ -4,6 +4,8 @@ const em = require('../service/em');
 const live = require('../service/live');
 
 class IMCtrl {
+
+  //得到观众列表
   getRoomUsers(req, res) {
     let {
       roomId: roomId1

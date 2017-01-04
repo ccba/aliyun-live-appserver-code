@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "NODE_ENV=development nodemon --debug ./app.js",
-    "prod": "NODE_ENV=production pm2 start ./app.js --name videocallmnsserver --merge-logs --log-date-format 'YYYY-MM-DD HH:mm:ss' -e videocall_err.log -o videocall_out.log",
+    "prod": "NODE_ENV=production pm2 start ./app.js --name videocallmnsserver --log-date-format 'YYYY-MM-DD HH:mm:ss' -e videocall_err.log -o videocall_out.log",
     "stop": "NODE_ENV=production pm2 stop videocallmnsserver"
   },
   "repository": "https: //github.com/ccba/aliyun-live-appserver-code",
