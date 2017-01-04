@@ -3,7 +3,7 @@ let config = {
   ip: "localhost",
   redis: {
     // host: '121.43.112.6',
-    password: "videocall",
+    password: "",
     host: '127.0.0.1',
     port: 6379,
     keyprefix: 'mns'
